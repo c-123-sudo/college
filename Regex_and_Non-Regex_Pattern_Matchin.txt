@@ -1,0 +1,84 @@
+Regex and Non-Regex Pattern Matching in Python
+import re
+
+def pattern_without_regex(text, pattern):
+    found = False
+    for i in range(len(text) - len(pattern) + 1):
+        if text[i:i + len(pattern)] == pattern:
+            found = True
+            print(f"Pattern '{pattern}' found at index {i}")
+    if not found:
+        print(f"Pattern '{pattern}' not found")
+
+def pattern_with_regex(text, pattern):
+    matches = re.finditer(pattern, text)
+    found = False
+    for match in matches:
+        found = True
+        print(f"Pattern '{pattern}' found at index {match.start()}")
+    if not found:
+        print(f"Pattern '{pattern}' not found")
+
+# Example Usage
+text = "M S Ramaiah Institute of Technology is located in Bangalore, India"
+pattern1 = "dia"
+pattern2 = "n"
+pattern3 = "M"
+pattern4 = "India"
+email = "student@example.com"
+email_pattern = r'^[a-zA-Z0-9_.]+@[a-zA-Z]+\.'
+
+# Searching for a pattern in the text
+print("\nPattern Recognition Using Regular Expressions:")
+pattern_with_regex(text, pattern1)
+
+# Finding all occurrences of a pattern
+print("\nAll occurrences of a pattern:")
+print(re.findall(pattern2, text))
+
+# Matching the pattern at the start of the string
+print("\nMatching the pattern at the start of the text:")
+print("Pattern matches" if re.match(pattern3, text) else "Pattern not found")
+
+# Replacing a pattern in the text
+print("\nReplacing a pattern:")
+print(re.sub(pattern4, "Bharat", text))
+
+# Splitting the text based on a pattern
+print("\nSplitting the text based on a pattern:")
+print(re.split(pattern2, text))
+
+# Email validation
+print("\nEmail validation:")
+print("Found" if re.search(email_pattern, email) else "Error")
+
+# Manual pattern search without regex
+print("\nPattern Recognition Without Using Regular Expressions:")
+pattern_without_regex(text, pattern1)
+
+
+
+
+
+
+
+Pattern Recognition Using Regular Expressions:
+Pattern 'dia' found at index 63
+
+All occurrences of a pattern:
+['n', 'n', 'n', 'n', 'n']
+
+Matching the pattern at the start of the text:
+Pattern matches
+
+Replacing a pattern:
+M S Ramaiah Institute of Technology is located in Bangalore, Bharat
+
+Splitting the text based on a pattern:
+['M S Ramaiah I', 'stitute of Tech', 'ology is located i', ' Ba', 'galore, I', 'dia']
+
+Email validation:
+Found
+
+Pattern Recognition Without Using Regular Expressions:
+Pattern 'dia' found at index 63
