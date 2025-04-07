@@ -1,0 +1,102 @@
+class Student:
+    def __init__(self, name, student_id):  # Corrected the init method name
+        self.name = name
+        self.student_id = student_id
+        
+    def display_info(self):
+        print(f"Name: {self.name}")
+        print(f"Student ID: {self.student_id}")
+        
+    def study(self):
+        print(f"{self.name} is studying.")
+        
+class GraduateStudent(Student):
+    def __init__(self, name, student_id, thesis_title):  # Corrected the init method name
+        super().__init__(name, student_id)  # Corrected the super() call
+        self.thesis_title = thesis_title
+        
+    def display_info(self):
+        super().display_info()
+        print(f"Thesis Title: {self.thesis_title}")
+        
+    def research(self):
+        print(f"{self.name} is researching on '{self.thesis_title}'.")
+        
+student1 = Student("Alice", "S1001")
+grad_student1 = GraduateStudent("Bob", "G2001", "AI in Healthcare")
+
+print("====Student Info====")
+student1.display_info()
+student1.study()
+
+print("\n====Graduate Student Info====")
+grad_student1.display_info()
+grad_student1.study()
+grad_student1.research()
+
+====Student Info====
+Name: Alice
+Student ID: S1001
+Alice is studying.
+
+====Graduate Student Info====
+Name: Bob
+Student ID: G2001
+Thesis Title: AI in Healthcare
+Bob is studying.
+Bob is researching on 'AI in Healthcare'.
+
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        
+    def display_info(self):
+        print(f"Make: {self.make}")
+        print(f"Model: {self.model}")
+        print(f"Year: {self.year}")
+        
+    def drive(self):
+        print(f"The {self.make} {self.model} is now driving.")
+        
+class SportsCar(Car):
+    def __init__(self, make, model, year, top_speed):
+        super().__init__(make,model,year)
+        self.top_speed = top_speed
+        
+    def display_info(self):
+        super().display_info()
+        print(f"Top Speed: {self.top_speed} mph")
+        
+    def race(self):
+        print(f"The {self.make} {self.model} is racing at {self.top_speed} mph!")
+
+car1 = Car("Toyota", "Camry", 2020)
+sports_car1 = SportsCar("Ferrari", "488", 2021, 211)
+
+print("========== Car Info =================")
+car1.display_info()
+car1.drive()
+
+print("============ Sports Car Info ==============")
+sports_car1.display_info()
+sports_car1.drive()
+sports_car1.race()
+
+========== Car Info =================
+Make: Toyota
+Model: Camry
+Year: 2020
+The Toyota Camry is now driving.
+============ Sports Car Info ==============
+Make: Ferrari
+Model: 488
+Year: 2021
+Top Speed: 211 mph
+The Ferrari 488 is now driving.
+The Ferrari 488 is racing at 211 mph!
+
+
+
+
